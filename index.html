@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <div class="mapBlock">
+        <div class="search">
+            <svg class="search__icon" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.3794 3.07829C9.80235 4.58313 9.73595 6.95657 8.23111 8.37951C6.72627 9.80246 4.35283 9.73607 2.92989 8.23123C1.50694 6.72638 1.57333 4.35294 3.07817 2.93C4.58301 1.50705 6.95646 1.57344 8.3794 3.07829Z" stroke="black" stroke-width="0.5"/>
+                <path d="M8.40289 8.56104L11.4947 11.8307" stroke="black" stroke-width="0.5"/>
+            </svg>                
+            <input class="search__bar" type="text"></input>
+            <div class="search__results">
+                <!-- <div class="search__result">
+                    <img class="search__resultPic" src="./assets//mac.png" alt="shop icon">
+                    <div class="search__resultHeader">Макдональдс</div>
+                    <div class="search__resultDescription">Тупа похавать и еще можно посидеть кого-нибудь колой облить,
+                        покидаться наггетсами, поматариться и послушать говно с колонки, кайф
+                    </div>
+                </div> -->
+                <!-- <div class="search__resultEmpty">По вашему запросу не нашлось магазинов</div> -->
+            </div>
+        </div>
+        <div class="floors">
+            <div class="floor first active">1</div>
+            <div class="floor second">2</div>
+            <div class="floor third">3</div>
+            <div class="floor fourth">4</div>
+            <div class="floor fifth">5</div>
+        </div>
+        <div class="map"></div>
+        <div class="tooltip hidden">
+            <img class="tooltip__pic" src="./assets//mac.png" alt="shop icon">
+            <div class="tooltip__title">Макдональдс</div>
+            <div class="tooltip__description">Тупа похавать и еще можно посидеть кого-нибудь колой облить,
+                покидаться наггетсами, поматариться и послушать говно с колонки, кайф</div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="elements.js"></script>
+    <script src="floorMaps.js"></script>
+    <script src="appendMaps.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
