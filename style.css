@@ -158,6 +158,6 @@ body {
 .map path {
     transition: fill 0.25s;
 }
-.map path.hoverable:hover {
+.map path.highlighted {
     fill: #AAAAAA;
 }

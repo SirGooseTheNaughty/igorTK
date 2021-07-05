@@ -13,7 +13,7 @@ function filterSearchedShops () {
     return [];
 }
 
-function callTooltip (elem, e) {
+function callTooltip (e) {
     if (!state.activeSection) {
         // tooltip.block.classList.add('hidden');
         state.tooltipTimeout = setTimeout(() => {
@@ -56,18 +56,15 @@ shopMapItems.forEach(item => {
     }
     const section = item.classList[0];
     if (!isNaN(section) || !isNaN(section.split('-')[0])) {
-        if (item.nodeName === 'path') {
-            item.classList.add('hoverable');
-        } else {
-            item.querySelectorAll('path').forEach(path => path.classList.add('hoverable'));
-        }
         item.addEventListener('mouseenter', function (e) {
             state.activeSection = section;
-            callTooltip(this, e);
+            callTooltip(e);
+            this.classList.add('highlighted');
         });
         item.addEventListener('mouseleave', function (e) {
             state.activeSection = null;
-            callTooltip(this, e);
+            callTooltip(e);
+            this.classList.remove('highlighted');
         });
     }
 });
@@ -78,6 +75,17 @@ tooltip.block.addEventListener('mouseleave', (e) => {
     state.activeSection = null;
     callTooltip(e);
 });
+
+function clickSearchResult (data) {
+    const { section } = data;
+    const shopElement = mapContainer.getElementsByClassName(section.toString())[0];
+    shopElement.classList.add('highlighted');
+    state.activeSection = section;
+    callTooltip({
+        layerX: $(shopElement).offset().left - $(mapContainer).offset().left,
+        layerY: $(shopElement).offset().top,
+    });
+};
 
 // отрисовщики
 function showCurrentMap () {
@@ -106,6 +114,11 @@ function redrawSearchResults () {
     } else {
         $(searchResults).append(epmtySearchResult);
     }
+    searchResults.querySelectorAll('.search__result').forEach((res, i) => {
+        res.addEventListener('click', () => {
+            clickSearchResult(filteredShops[i]);
+        });
+    });
 }
 
 function changePathFillColor (elem, hovered) {
