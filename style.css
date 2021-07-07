@@ -4,6 +4,8 @@
     --lightGray: #F2F2F2;
     --black: #212121;
     --white: #FCFCFC;
+    --hoveredShop: #00A2D1;
+    --emptyShop: #AAAAAA;
 }
 
 body {
@@ -11,6 +13,7 @@ body {
 }
 .mapBlock {
     width: 1160px;
+    height: 500px;
     position: relative;
     margin: 0 auto;
     font-family: 'Myriad-pro', sans-serif;
@@ -118,9 +121,9 @@ body {
     box-sizing: border-box;
     background-color: var(--white);
     color: var(--black);
-    cursor: pointer;
     transition: opacity 0.4s;
     border-radius: 8px;
+    pointer-events: none;
 }
 .tooltip__pic {
     width: 88px;
@@ -159,5 +162,11 @@ body {
     transition: fill 0.25s;
 }
 .map path.highlighted {
-    fill: #AAAAAA;
+    fill: var(--hoveredShop);
+}
+.map .clickable {
+    cursor: pointer;
+}
+.map .empty {
+    fill: var(--emptyShop);
 }

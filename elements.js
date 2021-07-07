@@ -1,12 +1,15 @@
 const mapBlock = document.querySelector('.mapBlock');
-const searchBar = mapBlock.querySelector('.search__bar');
-const searchResults = mapBlock.querySelector('.search__results');
-const searchBlock = mapBlock.querySelector('.search');
 const floorsBlock = mapBlock.querySelector('.floors');
 const mapContainer = mapBlock.querySelector('.map');
 
 const floorButtons = Array.from(mapBlock.querySelectorAll('.floor'));
 
+const search = {
+    block: mapBlock.querySelector('.search'),
+    bar: mapBlock.querySelector('.search__bar'),
+    results: mapBlock.querySelector('.search__results'),
+};
+search.bar.value = '';
 const tooltip = {
     block: mapBlock.querySelector('.tooltip'),
     pic: mapBlock.querySelector('.tooltip__pic'),
@@ -24,3 +27,8 @@ const searchResultTemplate = (url = './assets/none.png', title, desc) => {
     `);
 };
 const epmtySearchResult = '<div class="search__resultEmpty">По вашему запросу не нашлось магазинов</div>';
+
+const mapColors = {
+    std: '#9B9B9B',
+    hovered: '#00A2D1'
+};

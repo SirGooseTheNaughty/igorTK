@@ -1,40 +1,48 @@
-const shops = [
+let shops;
+
+const rawShops = [
     {
-        name: 'Familia',
-        desc: 'Магазин всякой всячины со скидками',
-        type: 'clothes',
-        floor: 2,
-        section: 230,
-        img: './assets/familia.png',
+        title: 'Familia',
+        descr: 'Магазин всякой всячины со скидками',
+        characteristics: [
+            { title: "section", value: "230" }
+        ],
+        gallery: "[{\"img\":\".\\/assets\\/familia.png\"}]",
         insta: 'https://www.instagram.com/detkishop_com/',
         vk: 'https://vk.com/detki',
         site: 'https://detkishop.com/'
     },
     {
-        name: 'ЗооОптТорг',
-        desc: 'Товары для животинок',
-        type: 'groceries',
-        floor: 3,
-        section: 301,
-        img: './assets/zooopttorg.png',
+        title: 'ЗооОптТорг',
+        descr: 'Товары для животинок',
+        characteristics: [
+            { title: "section", value: "301" }
+        ],
+        gallery: "[{\"img\":\".\\/assets\\/zooopttorg.png\"}]",
         insta: '',
         vk: '',
         site: ''
     },
     {
-        name: 'Макдональдс',
-        desc: 'Чисто пожракать',
-        type: 'food',
-        floor: 3,
-        section: 103,
-        img: './assets/mac.png',
+        title: 'Макдональдс',
+        descr: 'Чисто пожракать',
+        characteristics: [
+            { title: "section", value: "103" }
+        ],
+        gallery: "[{\"img\":\".\\/assets\\/mac.png\"}]",
         insta: '',
         vk: '',
         site: ''
     }
 ];
 
-const mapColors = {
-    std: '#9B9B9B',
-    hovered: '#AAAAAA'
-};
+function preformShopData (rawData) {
+    return rawData.map(data => {
+        data.section = data.characteristics[0].value;
+        data.floor = parseInt(data.section.split('')[0]) - 1;
+        data.img = data.gallery ? JSON.parse(data.gallery)[0].img : 'https://static.tildacdn.com/tild6234-3434-4066-a362-393731373634/none.png';
+        return data;
+    });
+}
+
+shops = preformShopData(rawShops);

@@ -1,5 +1,5 @@
 const state = {
-    floor: 1,
+    floor: 0,
     activeSection: null,
     searchValue: '',
     tooltipTimeout: 0
@@ -8,83 +8,105 @@ const state = {
 // функции
 function filterSearchedShops () {
     if (state.searchValue) {
-        return shops.filter(shop => shop.name.toLowerCase().includes(state.searchValue));
+        return shops.filter(shop => shop.title.toLowerCase().includes(state.searchValue));
     }
     return [];
 }
 
 function callTooltip (e) {
     if (!state.activeSection) {
-        // tooltip.block.classList.add('hidden');
         state.tooltipTimeout = setTimeout(() => {
-            state.activeSection = null;
-            tooltip.block.classList.add('hidden');
-        }, 1000);
+            hideTooltip();
+        }, 200);
     }
     const shopInfo = shops.find(shop => shop.section == state.activeSection);
-    console.log(shopInfo);
     if (!shopInfo) {
         return;
     }
-    console.log(e);
-    const { img, name, desc } = shopInfo;
-    tooltip.block.style.top = `${e.layerY}px`;
-    tooltip.block.style.left = `${e.layerX}px`;
+    const { img, title, descr } = shopInfo;
+    moveTooltip(e);
     tooltip.pic.setAttribute('src', img || './assets/none.png');
-    tooltip.title.textContent = name;
-    tooltip.desc.textContent = desc;
+    tooltip.title.textContent = title;
+    tooltip.desc.textContent = descr;
     tooltip.block.classList.remove('hidden');
     clearTimeout(state.tooltipTimeout);
 }
 
-// слушатели событий
-floorButtons.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-        state.floor = i;
-        showCurrentMap();
-    })
-});
+function moveTooltip (e) {
+    tooltip.block.style.top = `${e.layerY}px`;
+    tooltip.block.style.left = `${e.layerX + 15}px`;
+}
 
-searchBar.addEventListener('input', function() {
-    state.searchValue = this.value.toLowerCase();
-    redrawSearchResults();
-});
-
-shopMapItems.forEach(item => {
-    if (!item.classList.length) {
-        return;
-    }
-    const section = item.classList[0];
-    if (!isNaN(section) || !isNaN(section.split('-')[0])) {
-        item.addEventListener('mouseenter', function (e) {
-            state.activeSection = section;
-            callTooltip(e);
-            this.classList.add('highlighted');
-        });
-        item.addEventListener('mouseleave', function (e) {
-            state.activeSection = null;
-            callTooltip(e);
-            this.classList.remove('highlighted');
-        });
-    }
-});
-tooltip.block.addEventListener('mouseenter', () => {
-    clearTimeout(state.tooltipTimeout);
-});
-tooltip.block.addEventListener('mouseleave', (e) => {
+function hideTooltip () {
     state.activeSection = null;
-    callTooltip(e);
-});
+    tooltip.block.classList.add('hidden');
+}
+
+// слушатели событий
+function addListeners () {
+    floorButtons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+            state.floor = i;
+            showCurrentMap();
+            hideTooltip();
+        })
+    });
+    
+    search.bar.addEventListener('input', function() {
+        state.searchValue = this.value.toLowerCase();
+        redrawSearchResults();
+    });
+    
+    shopMapItems.forEach(item => {
+        if (!item.classList.length) {
+            return;
+        }
+        const section = item.classList[0];
+        if (!isNaN(section) || !isNaN(section.split('-')[0])) {
+            const isFilledWithData = shops.findIndex(shop => shop.section == section) !== -1;
+            if (isFilledWithData) {
+                item.classList.add('clickable');
+                item.addEventListener('mouseenter', function (e) {
+                    state.activeSection = section;
+                    callTooltip(e);
+                    this.classList.add('highlighted');
+                });
+                item.addEventListener('mouseleave', function (e) {
+                    state.activeSection = null;
+                    callTooltip(e);
+                    this.classList.remove('highlighted');
+                });
+                item.addEventListener('mousemove', function (e) {
+                    moveTooltip(e);
+                });
+                item.addEventListener('click', function (e) {
+                    console.log(this);
+                });
+            } else {
+                item.classList.add('empty');
+            }
+        }
+    });
+}
 
 function clickSearchResult (data) {
-    const { section } = data;
+    const { floor, section } = data;
+    if (floor !== state.floor) {
+        state.floor = floor;
+        showCurrentMap();
+    }
     const shopElement = mapContainer.getElementsByClassName(section.toString())[0];
     shopElement.classList.add('highlighted');
     state.activeSection = section;
+    const rect = shopElement.getClientRects();
+    const addHeight = rect.length ? rect[0].height / 2 : 0;
+    const addWidth = rect.length ? rect[0].width / 2 : 0;
     callTooltip({
-        layerX: $(shopElement).offset().left - $(mapContainer).offset().left,
-        layerY: $(shopElement).offset().top,
+        layerX: $(shopElement).offset().left + addWidth - $(mapContainer).offset().left,
+        layerY: $(shopElement).offset().top + addHeight - $(mapContainer).offset().top,
     });
+    search.results.innerHTML = '';
+    search.bar.value = '';
 };
 
 // отрисовщики
@@ -101,20 +123,20 @@ function showCurrentMap () {
 }
 
 function redrawSearchResults () {
-    searchResults.innerHTML = '';
+    search.results.innerHTML = '';
     if (!state.searchValue) {
         return;
     }
     const filteredShops = filterSearchedShops();
     if (filteredShops.length) {
         filteredShops.forEach(shop => {
-            const { img, name, desc } = shop;
-            $(searchResults).append(searchResultTemplate(img, name, desc));
+            const { img, title, descr } = shop;
+            $(search.results).append(searchResultTemplate(img, title, descr));
         });
     } else {
-        $(searchResults).append(epmtySearchResult);
+        $(search.results).append(epmtySearchResult);
     }
-    searchResults.querySelectorAll('.search__result').forEach((res, i) => {
+    search.results.querySelectorAll('.search__result').forEach((res, i) => {
         res.addEventListener('click', () => {
             clickSearchResult(filteredShops[i]);
         });
