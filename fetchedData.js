@@ -14,11 +14,15 @@ async function fetchData () {
 async function getShops () {
     const res = await fetchData();
     shops = preformShopData(res.products);
+    isDataLoaded = true;
     addListeners();
 }
 
 function preformShopData (rawData) {
     return rawData.map(data => {
+        if (data.title.includes('&amp;')) {
+            data.title = data.title.split('&amp;').join('&');
+        }
         data.section = data.characteristics[0].value;
         data.floor = parseInt(data.section.split('')[0]) - 1;
         data.img = data.gallery ? JSON.parse(data.gallery)[0].img : 'https://static.tildacdn.com/tild6234-3434-4066-a362-393731373634/none.png';
