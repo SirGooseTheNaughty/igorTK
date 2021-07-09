@@ -42,6 +42,12 @@ function hideTooltip () {
     tooltip.block.classList.add('hidden');
 }
 
+function clickCorrespondingCard () {
+    const cards = galleries.reduce((acc, gal) => [...acc, ...gal.cardsData], []).filter(card => card.floor === state.floor);
+    const shopInfo = shops.find(shop => shop.section == state.activeSection);
+    cards.find(card => card.title === shopInfo.title).card.querySelector('a').click();
+}
+
 // слушатели событий
 function addListeners () {
     floorButtons.forEach((btn, i) => {
@@ -80,7 +86,7 @@ function addListeners () {
                     moveTooltip(e);
                 });
                 item.addEventListener('click', function (e) {
-                    console.log(this);
+                    clickCorrespondingCard();
                 });
             } else {
                 item.classList.add('empty');

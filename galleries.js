@@ -48,7 +48,8 @@ function getCardsData (cards) {
     
         return {
             card,
-            floor
+            floor,
+            title
         };
     });
     return cardsData;

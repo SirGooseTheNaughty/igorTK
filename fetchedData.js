@@ -20,6 +20,9 @@ async function getShops () {
 
 function preformShopData (rawData) {
     return rawData.map(data => {
+        if (!data.characteristics || !data.characteristics[0]) {
+            return null;
+        }
         if (data.title.includes('&amp;')) {
             data.title = data.title.split('&amp;').join('&');
         }
@@ -27,7 +30,8 @@ function preformShopData (rawData) {
         data.floor = parseInt(data.section.split('')[0]) - 1;
         data.img = data.gallery ? JSON.parse(data.gallery)[0].img : 'https://static.tildacdn.com/tild6234-3434-4066-a362-393731373634/none.png';
         return data;
-    });
+    })
+    .filter(data => data);
 }
 
 getShops();
