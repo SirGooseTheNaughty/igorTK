@@ -6,6 +6,13 @@ const floorMaps = [
 <path class="124" d="M228.75 388.825C227.616 393.34 226.119 397.708 224.294 401.904L252.04 414.924C255.699 406.687 258.425 397.945 260.077 388.825H228.75Z" fill="#9B9B9B"/>
 <path class="105" d="M63.565 340.26C61.0985 347.587 59.6059 354.891 59.1781 362.936L85.0903 363.751C85.4362 358.791 86.3736 353.999 87.8253 349.434L63.565 340.26Z" fill="#9B9B9B"/>
 <path class="103" d="M184.188 416.617C173.767 424.741 160.67 429.587 146.43 429.587C112.927 429.587 85.6863 402.797 84.9537 369.471L53.4576 368.507L53.4895 362.754H53.4941C53.9446 354.071 55.5601 346.148 58.2451 338.244C58.8458 336.437 59.5057 334.662 60.2201 332.915L89.8094 344.087C95.3204 331.108 105.159 320.409 117.519 313.811L94.4785 264.908C56.7843 283.925 30.9267 322.985 30.9267 368.088C30.9267 431.881 82.6419 483.596 146.435 483.596C174.158 483.596 199.597 473.825 219.502 457.543L184.188 416.617Z" fill="#9B9B9B"/>
+<rect x="110" y="420" width="67" height="67" fill="url(#pattern0)" style="pointer-events: none"/>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0" transform="scale(0.002)"/>
+</pattern>
+<image id="image0" width="500" height="500" xlink:href="${logos.tokio}"></image>
+</defs>
 <path class="101" d="M180.229 384.32C182.591 379.41 183.915 373.903 183.915 368.092C183.915 347.391 167.136 330.612 146.435 330.612C133.584 330.612 122.243 337.083 115.49 346.945L180.229 384.32Z" fill="#9B9B9B"/>
 <path class="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M189.731 324.232L204.462 306.133V225.925H187.365V183.134H156.073L156.183 307.23C169.161 309.291 180.789 315.403 189.731 324.232Z" fill="#9B9B9B"/>
 <path class="130" fill-rule="evenodd" clip-rule="evenodd" d="M625.392 244.898H659.7V183.294H625.392V244.898Z" fill="#9B9B9B"/>
@@ -19,10 +26,7 @@ const floorMaps = [
 <path class="117" fill-rule="evenodd" clip-rule="evenodd" d="M336.412 211.782V244.825H310.491V211.782H336.412Z" fill="#9B9B9B"/>
 <path class="Vector_3" fill-rule="evenodd" clip-rule="evenodd" d="M210.465 184.432V223.336H280.483V244.457L296.593 244.379L296.629 202.994L310.031 203.067V184.432H210.465Z" fill="#9B9B9B"/>
 <path class="128" d="M537.448 183.198H507.313V244.77H537.448V183.198Z" fill="#9B9B9B"/>
-<g class="125">
-<path d="M501.456 183.203H387.795V244.775H501.456V183.203Z" fill="#9B9B9B"/>
-<path d="M501.456 183.203H387.795V244.775H501.456V183.203Z" fill="#9B9B9B"/>
-</g>
+<path class="125" d="M501.456 183.203H387.795V244.775H501.456V183.203Z" fill="#9B9B9B"/>
 <path class="Vector_4" fill-rule="evenodd" clip-rule="evenodd" d="M342.096 244.88H382.111V183.203H342.096V244.88Z" fill="#9B9B9B"/>
 <path class="118" d="M336.362 307.253H311.401V257.681H336.412L336.362 307.253Z" fill="#9B9B9B"/>
 <path class="119" d="M305.717 257.681H280.483V307.253H305.717V257.681Z" fill="#9B9B9B"/>
@@ -32,8 +36,29 @@ const floorMaps = [
 <path class="115" fill-rule="evenodd" clip-rule="evenodd" d="M274.803 228.274V244.457H246.907V228.274H274.803Z" fill="#9B9B9B"/>
 <path class="114" fill-rule="evenodd" clip-rule="evenodd" d="M241.292 228.188V244.457H210.465V228.188H241.292Z" fill="#9B9B9B"/>
 <path class="134" d="M1161.02 204.915H927.314V375.487H1161.02V204.915Z" fill="#9B9B9B"/>
+<rect width="143" height="143" fill="url(#pattern4)" x="975" y="220" style="pointer-events: none"/>
+<defs>
+<pattern id="pattern4" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image4" transform="scale(0.002)"/>
+</pattern>
+<image id="image4" width="500" height="500" xlink:href="${logos.mayak}"></image>
+</defs>
 <path class="149" d="M1161.02 59.2759H927.314V200.177H1161.02V59.2759Z" fill="#9B9B9B"/>
+<rect x="985" y="100" width="120" height="54" fill="url(#pattern2)" style="pointer-events: none"/>
+<defs>
+<pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image2" transform="translate(0 -0.546392) scale(0.002 0.00437113)"/>
+</pattern>
+<image id="image2" width="500" height="500" xlink:href="${logos.familia}"></image>
+</defs>
 <path class="156" d="M1161.02 380.229H876.104V437.697H1161.02V380.229Z" fill="#9B9B9B"/>
+<rect fill="url(#pattern5)" style="pointer-events: none" height="70" width="70" x="990" y="390"></rect>
+<defs>
+<pattern id="pattern5" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image5" transform="scale(0.001)"></use>
+</pattern>
+<image id="image5" width="500" height="500" xlink:href="${logos.mac}"></image>
+</defs>
 <path class="102-1" d="M125.656 399.288L142.94 369.353L112.645 351.86C110.283 356.77 108.959 362.277 108.959 368.088C108.955 381.108 115.585 392.571 125.656 399.288Z" fill="#9B9B9B"/>
 <path class="102" d="M147.045 371.724L129.761 401.663C134.785 404.162 140.446 405.572 146.439 405.572C159.291 405.572 170.631 399.101 177.385 389.24L147.045 371.724Z" fill="#9B9B9B"/>
 <path class="110" fill-rule="evenodd" clip-rule="evenodd" d="M336.362 312.937H210.023V337.58L216.54 354.04L221.914 354.035L221.778 368.302L276.783 368.739L276.92 380.257C296.798 380.257 316.598 380.252 336.358 380.248V312.937H336.362Z" fill="#9B9B9B"/>
@@ -54,6 +79,13 @@ const floorMaps = [
 <path class="131-1" d="M680.83 183.257H665.371V244.861H680.83V183.257Z" fill="#9B9B9B"/>
 <path class="131-2" d="M701.959 183.257H686.5V244.861H701.959V183.257Z" fill="#9B9B9B"/>
 <path class="140" fill-rule="evenodd" clip-rule="evenodd" d="M858.761 291.334H808.825V257.663H625.392V307.239H808.825V307.225H858.761V291.334Z" fill="#9B9B9B"/>
+<rect fill="url(#pattern1)" style="pointer-events: none" x="660" height="120" width="120" y="255"></rect>
+<defs>
+<pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image1" transform="translate(0) scale(0.001)"></use>
+<image id="image1" width="500" height="500" xlink:href="${logos.kari}"></image>
+</pattern>
+</defs>
 <path class="154-1" d="M564.944 277.973H539.801V286.934H564.944V277.973Z" fill="#9B9B9B"/>
 <path class="145-1" d="M535.55 277.973H510.407V286.934H535.55V277.973Z" fill="#9B9B9B"/>
 <path class="142" fill-rule="evenodd" clip-rule="evenodd" d="M510.102 257.681H534.094V267.169H510.102V257.681Z" fill="#9B9B9B"/>

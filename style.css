@@ -29,6 +29,7 @@ body {
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
+    z-index: 2;
 }
 .floor {
     width: 32px;
@@ -40,6 +41,7 @@ body {
     display: grid;
     place-items: center;
     cursor: pointer;
+    z-index: 2;
 }
 .floor.active {
     background-color: var(--activeFloorColor);
@@ -52,6 +54,10 @@ body {
     position: absolute;
     left: 0;
     top: 0;
+}
+.search__result {
+    max-height: 100px;
+    overflow-y: scroll;
 }
 .search__bar {
     width: 100%;
@@ -150,10 +156,17 @@ body {
     pointer-events: none;
 }
 
+.map {
+    display: grid;
+    place-items: center;
+}
 .map svg {
     display: block;
     margin: 0 auto;
     padding-top: 100px;
+}
+.map svg:first-child {
+    padding-top: 40px;
 }
 .map svg.hidden {
     display: none;
@@ -169,4 +182,92 @@ body {
 }
 .map .empty {
     fill: var(--emptyShop);
+}
+
+@media screen and (max-width: 1200px) {
+    .mapBlock {
+        width: 940px;
+    }
+    .search {
+        width: 320px;
+    }
+    .map svg {
+        transform-origin: left top;
+        transform: scale(0.8) translateX(80px);
+    }
+    .map svg:first-child {
+        transform: scale(0.8) translateX(0);
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .mapBlock {
+        width: 620px;
+    }
+    .search {
+        width: 280px;
+    }
+    .map svg {
+        padding-top: 120px;
+        transform: scale(0.5) translateX(80px);
+    }
+    .map svg:first-child {
+        padding-top: 80px;
+        transform: scale(0.5) translateX(-40px);
+    }
+    .floors {
+        right: 0;
+        left: auto;
+        transform: none;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .mapBlock {
+        width: 460px;
+    }
+    .search {
+        width: 400px;
+        bottom: 0;
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .map svg {
+        padding-top: 200px;
+        transform: scale(0.4) translateX(100px);
+    }
+    .map svg:first-child {
+        padding-top: 150px;
+        transform: scale(0.4) translateX(-40px);
+    }
+    .floors {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mapBlock {
+        width: 320px;
+        height: 300px;
+    }
+    .search {
+        width: 300px;
+    }
+    .search__results {
+        max-height: 150px;
+    }
+    .map svg {
+        padding-top: 200px;
+        transform: scale(0.3) translateX(100px);
+    }
+    .map svg:first-child {
+        padding-top: 150px;
+        transform: scale(0.3) translateX(-40px);
+    }
+    .tooltip {
+        display: none !important;
+    }
 }

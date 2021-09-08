@@ -85,7 +85,14 @@ function addListeners () {
                 item.addEventListener('mousemove', function (e) {
                     moveTooltip(e);
                 });
-                item.addEventListener('click', function (e) {
+                item.addEventListener('click', function () {
+                    state.activeSection = section;
+                    clickCorrespondingCard();
+                });
+                item.addEventListener('touchend', function () {
+                    removeHighlights();
+                    this.classList.add('highlighted');
+                    state.activeSection = section;
                     clickCorrespondingCard();
                 });
             } else {
@@ -95,6 +102,10 @@ function addListeners () {
     });
 }
 
+function removeHighlights () {
+    mapContainer.querySelectorAll('.highlighted').forEach(elem => elem.classList.remove('highlighted'));
+}
+
 function clickSearchResult (data) {
     const { floor, section } = data;
     if (floor !== state.floor) {
@@ -102,15 +113,18 @@ function clickSearchResult (data) {
         showCurrentMap();
     }
     const shopElement = mapContainer.getElementsByClassName(section.toString())[0];
+    removeHighlights();
     shopElement.classList.add('highlighted');
     state.activeSection = section;
-    const rect = shopElement.getClientRects();
-    const addHeight = rect.length ? rect[0].height / 2 : 0;
-    const addWidth = rect.length ? rect[0].width / 2 : 0;
-    callTooltip({
-        layerX: $(shopElement).offset().left + addWidth - $(mapContainer).offset().left,
-        layerY: $(shopElement).offset().top + addHeight - $(mapContainer).offset().top,
-    });
+    if ($(window).width() > 480) {
+        const rect = shopElement.getClientRects();
+        const addHeight = rect.length ? rect[0].height / 2 : 0;
+        const addWidth = rect.length ? rect[0].width / 2 : 0;
+        callTooltip({
+            layerX: $(shopElement).offset().left + addWidth - $(mapContainer).offset().left,
+            layerY: $(shopElement).offset().top + addHeight - $(mapContainer).offset().top,
+        });
+    }
     search.results.innerHTML = '';
     search.bar.value = '';
 };
@@ -126,6 +140,7 @@ function showCurrentMap () {
             floorButtons[i].classList.remove('active');
         }
     });
+    refillCatalogue();
 }
 
 function redrawSearchResults () {

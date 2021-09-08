@@ -18,6 +18,10 @@ const galleries = [
         title: document.querySelector('#rec334072508'),
     },
     {
+        block: document.querySelector('#rec336317039'),
+        title: document.querySelector('#rec336316946'),
+    },
+    {
         block: document.querySelector('#rec334073679'),
         title: document.querySelector('#rec334073519'),
     },
